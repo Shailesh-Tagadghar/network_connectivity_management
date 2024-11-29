@@ -3,18 +3,24 @@ part of 'post_bloc.dart';
 @immutable
 abstract class PostState {}
 
-final class PostInitial extends PostState {}
+abstract class PostActionState extends PostState {}
 
-class PostLoading extends PostState {}
+class PostInitial extends PostState {}
 
-class PostLoaded extends PostState {
+class PostFechingLoadingState extends PostState {}
+
+class PostFetchingSuccessfulState extends PostState {
   final List<PostModel> posts;
 
-  PostLoaded(this.posts);
+  PostFetchingSuccessfulState({
+    required this.posts,
+  });
 }
 
-class PostError extends PostState {
+class PostFechingErrorState extends PostState {
   final String message;
 
-  PostError(this.message);
+  PostFechingErrorState({
+    required this.message,
+  });
 }
