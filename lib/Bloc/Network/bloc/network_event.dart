@@ -1,4 +1,6 @@
 part of 'network_bloc.dart';
 
 @immutable
-sealed class NetworkEvent {}
+abstract class NetworkEvent {}
+
+class CheckNetworkStatus extends NetworkEvent {}
