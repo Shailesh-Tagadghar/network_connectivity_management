@@ -1,12 +1,10 @@
 import 'dart:async';
 import 'dart:io';
-
 import 'package:bloc/bloc.dart';
 // ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
 import 'package:network_connectivity_management/Bloc/Post/data/model/post_model.dart';
 import 'package:network_connectivity_management/Bloc/Post/data/repository/post_repo.dart';
-
 part 'post_event.dart';
 part 'post_state.dart';
 
@@ -27,8 +25,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
       emit(PostFetchingSuccessfulState(posts: posts));
     } on SocketException {
       emit(PostFechingErrorState(
-        message:
-            'No internet connection. Please check your network.', // Alert after last attempt
+        message: 'No internet connection. Please check your network.',
       ));
     } on TimeoutException {
       emit(PostFechingErrorState(
